@@ -11,19 +11,16 @@ How many such routes are there through a 20×20 grid?
 
 
 """
-
 import numpy as np
+ 
+n = 20
+ 
+mat = np.zeros((n,n), dtype=np.int64)
 
-
-
-
-def gen_paths(n):
-    paths = set()
-    first_path = [1]*n + [0]*n
+for i in range(n):
+    mat[0,i] = i+2
+    mat[i,0] = i+2
     
-    
-n = 5
-first_path = [1]*n + [0]*n
-
-permute = np.random.permutation(first_path)
-np.array_str(permute)
+for col in range(1,n):
+    for row in range(1,n):
+        mat[row,col] = mat[row-1,col] + mat[row, col-1]
