@@ -42,5 +42,24 @@ def get_divisors(num):
             divs.add(num//i)
     return sorted(list(divs))
 
+def is_pandigital(n, digits=9):
+    if len(str(n)) != 9:
+        return False
+    
+    if len(set(str(n))) == len(str(n)):
+        return True
+    return False
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
 def rotate(s,r):
     return s[r:] + s[:r]

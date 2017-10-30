@@ -18,10 +18,7 @@ def is_truncatable(n):
             return False
     return True
         
-        
-        
-        
-    
+
 
 
 primes = set([2])
@@ -33,11 +30,11 @@ while num_truncs < 11:
     if is_prime(val):
         primes.add(val)
         
-    if is_truncatable(val) and val > 3797:
-        
-        num_truncs += 1
-        sum_truncs += val
-        print('new trunc', val, num_truncs)
+        if is_truncatable(val):
+            
+            num_truncs += 1
+            sum_truncs += val
+            print('new trunc', val, num_truncs)
     val += 2
     
 print(sum_truncs)
