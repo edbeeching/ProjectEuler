@@ -13,10 +13,18 @@ Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, contain
 import itertools
 
 
-for i in range(1,10):
-    vals = [i for i in range(1,i+1)]
-    for permute in itertools.permutations(vals):
-        n = sum([a*10**b for b,a in enumerate(permute)])
-        if len(set(str(n))) == len(set(str(2*n))) == len(set(str(3*n))) == len(set(str(4*n))) ==len(set(str(5*n))) == len(set(str(6*n))):
-            print(n)
-        
+    
+def check(n):    
+    v = sorted(str(n))    
+    for i in range(2,7):
+        nn = n*i
+        if sorted(str(nn)) != v:
+            return False
+    return True
+    
+    
+
+for n in range(1, 1000000):
+    if check(n):
+        print(n, 2*n, 3*n, 4*n, 5*n, 6*n)
+    

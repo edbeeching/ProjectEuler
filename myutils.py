@@ -3,6 +3,8 @@
 Created on Sun Oct 29 17:13:48 2017
 
 @author: Edward
+75836421
+
 """
 def triagonal(n):
     return int(n*(n+1)/2)
