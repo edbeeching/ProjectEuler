@@ -21,27 +21,3 @@ Find the value of d < 1000 for which 1/d contains the longest recurring cycle in
 
 
 """
-
-def get_cycle_size(d):
-    # TODO
-    f = 1.0 / d
-    f = str(f)
-    f = f[2:]
-    
-    best_cycle = 0
-    for start_i in range(len(f)//2 -1):
-        for end_i in range(start_i+1, len(f)//2):       
-            cycle_len = end_i - start_i
-            
-            if f[start_i:end_i] == f[end_i: end_i+cycle_len]:
-                if cycle_len > best_cycle:
-                    best_cycle = cycle_len
-            
-
-        
-    return best_cycle
-    
-    
-for i in range(1,100):
-    cycle_length = get_cycle_size(i)
-    print(i, 1/i, cycle_length)
