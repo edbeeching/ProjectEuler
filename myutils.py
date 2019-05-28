@@ -3,7 +3,6 @@
 Created on Sun Oct 29 17:13:48 2017
 
 @author: Edward
-75836421
 
 """
 
@@ -85,10 +84,26 @@ def is_pandigital(n, digits=9):
     if len(set(str(n))) == len(str(n)):
         return True
     return False
-    
+
     
 def rotate(s,r):
     return s[r:] + s[:r]
+
+def get_prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return factors
+    
+    
+
 
 
 if __name__ == '__main__':
