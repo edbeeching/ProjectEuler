@@ -39,11 +39,11 @@ def memo_is_prime(n):
 def is_pair(p1, p2):
     if p1 == p2:
         return False
-    n = int(str(p1) + str(p2))
+    n1 = int(str(p1) + str(p2))
     n2 = int(str(p2) + str(p1))
     
-    return memo_is_prime(n) and memo_is_prime(n2)
-        
+    return memo_is_prime(n1) and memo_is_prime(n2)
+
     
 def is_nlet(list_of_primes):
     if len(list_of_primes) != len(set(list_of_primes)):
@@ -71,70 +71,57 @@ found = False
 prime_list = [2]
 
 
-while n < 2000:
-    if memo_is_prime(n):
-        prime_list.append(n)
+# while n < 2000:
+#     if memo_is_prime(n):
+#         prime_list.append(n)
         
-for prim        
+      
 
 
 
 while not found:
     if memo_is_prime(n):
         prime_list.append(n)
-        print(n, len(primes), len(prime_list), len(pairs), len(triplets), len(quads))
+        print(n, len(primes), len(prime_list), len(pairs), len(triplets), len(quads), len(quins))
+        
+        cands = []
         for p in prime_list:
+            
             if is_pair(n,p):
                 cand = tuple(sorted((n,p)))
-                pairs.add(cand)
+                cands.append(cand)
                 
-                for pair in pairs:
+        if len(cands) > 0:
+            for cand in cands:
+                pairs.add(cand)
+            
+            cands = []
+            for pair in pairs:
+                if found: break
+                cand = tuple(sorted((*pair, n)))
+                if is_nlet(cand):
+                    cands.append(cand)
+            if len(cands) > 0:
+                for cand in cands:  
+                    triplets.add(cand)
+                cands = []
+                for trip in triplets:
                     if found: break
-                    cand = tuple(sorted((*pair, n)))
+                    cand = tuple(sorted((*trip, n)))
                     if is_nlet(cand):
-                        triplets.add(cand)
-                        
-                        for trip in triplets:
-                            if found: break
-                            cand = tuple(sorted((*trip, n)))
-                            if is_nlet(cand):
-                                quads.add(cand)
-                                for quad in quads:
-                                    if found: break
-                                    cand = tuple(sorted((*quad, n)))
-                                    if is_nlet(cand):
-                                        quins.add(cand)
-                                        print(cand)
-                                        found=True
+                        cands.append(cand)                    
+                if len(cands) > 0:        
+                    for cand in cands:
+                        quads.add(cand)
+                    
+                            
+                    for quad in quads:
+                        if found: break
+                        cand = tuple(sorted((*quad, n)))
+                        if is_nlet(cand):
+                            quins.add(cand)
+                            print(cand)
+                            found=True
+                            break
     n += 2
 
-
-
-# while n < 2000:
-#     memo_is_prime(n)
-#     n = n+2
-# print('Primes generated')
-# prime_list = list(primes)
-# for i, p1 in enumerate(prime_list[:-1], 1):
-#     print(i)
-#     for p2 in prime_list[i:]:
-        
-        
-        
-#         if (p1,p2) not in pairs and is_pair(p1,p2):
-#             s = tuple(sorted((p1,p2)))
-#             pairs.add(s)
-
-# for i, pair in enumerate(list(pairs)[:-1], 1):
-#     print(i)
-#     for pair2 in list(pairs)[i:]:
-#         p1,p2 = pair
-#         p3,p4 = pair2
-        
-#         vals = set([p1,p2,p3,p4])
-        
-#         for comb in itertools.combinations(list(vals),3):
-#             if tuple(sorted(comb)) not in triplets and is_nlet(comb):
-#                 s= tuple(sorted(comb))
-#                 triplets.add(s)
-        
