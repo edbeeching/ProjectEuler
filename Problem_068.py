@@ -24,7 +24,47 @@ def check_ring(array):
         array[3] + array[8]  + array[9] ==  
         array[4] + array[9]  + array[5]   
         )
-    
+
+def get_solution(array):
+    if min(array[:5]) == array[0]:
+        return [array[0] , array[5]  , array[6] ,
+            array[1] , array[6]  , array[7] ,  
+            array[2] , array[7]  , array[8] , 
+            array[3] , array[8]  , array[9] , 
+            array[4] , array[9]  , array[5] ]
+        
+    if min(array[:5]) == array[1]:
+        return [
+            array[1] , array[6]  , array[7] ,  
+            array[2] , array[7]  , array[8] , 
+            array[3] , array[8]  , array[9] , 
+            array[4] , array[9]  , array[5] ,
+            array[0] , array[5]  , array[6] ,]
+        
+    if min(array[:5]) == array[2]:
+        return [
+            
+            array[2] , array[7]  , array[8] , 
+            array[3] , array[8]  , array[9] , 
+            array[4] , array[9]  , array[5] ,
+            array[0] , array[5]  , array[6] ,
+            array[1] , array[6]  , array[7] ,  ]
+    if min(array[:5]) == array[3]:
+        return [
+            array[3] , array[8]  , array[9] , 
+            array[4] , array[9]  , array[5] ,
+            array[0] , array[5]  , array[6] ,
+            array[1] , array[6]  , array[7] ,  
+            array[2] , array[7]  , array[8] , ]
+        
+    if min(array[:5]) == array[4]:
+        return [
+            array[4] , array[9]  , array[5] ,
+            array[0] , array[5]  , array[6] ,
+            array[1] , array[6]  , array[7] ,  
+            array[2] , array[7]  , array[8] , 
+            array[3] , array[8]  , array[9] , ]
+        
     
 def find_solution():
     
@@ -41,12 +81,15 @@ def find_solution():
                     for q in set(range(1,11)).difference([i,j,k,l,m,n,o,p]):
                       for r in set(range(1,11)).difference([i,j,k,l,m,n,o,p,q]):
                           if check_ring([i,j,k,l,m,n,o,p,q,r]):
-                              if int(''.join([str(a) for a in [i,j,k,l,m,n,o,p,q,r]])) > highest:
+                              
+                              sol = get_solution([i,j,k,l,m,n,o,p,q,r])
+                              sol_s = ''.join([str(a) for a in sol])
+                              if  int(sol_s)> highest and len(sol_s) ==16:
                                   print('found 1')
                                   # if len(''.join([str(a) for a in [i,j,k,l,m,n,o,p,q,r]])) == 16:
                                   #     print('found 2')
-                                  highest = int(''.join([str(a) for a in [i,j,k,l,m,n,o,p,q,r]]))
-                                  solution = [i,j,k,l,m,n,o,p,q,r]
+                                  highest = int(sol_s)
+                                  solution = sol
     return solution
         
     
@@ -56,3 +99,5 @@ def find_solution():
 
 if __name__ == '__main__':
     print(find_solution())
+
+9411013635752824
